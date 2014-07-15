@@ -1,0 +1,56 @@
+﻿@model EAD_Project.User
+
+@{
+    ViewBag.Title = "SignIn";
+}
+
+
+
+
+<html>
+<head>
+<title>Sign-in</title>
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/text.css" />
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/style.css" />
+<link href="~/Content/galleria.css" rel="stylesheet" type="text/css" media="screen"> 
+<script language="JavaScript" type="text/JavaScript">
+     function v1()
+    {
+    if(document.pic.id.value ="")
+    {
+        alert("Fill all the text fields");
+        return false;
+        
+    }
+    if(document.pic.pswd.value ="")
+    {
+        alert("Fill all the text fields");
+        return false;
+    }
+    
+    
+    
+    }
+    
+</script>
+<body>
+
+    <form name="pic" action="/Home/checkSignIn" method="post"><br>
+
+ <div>
+     <h1> Sign In </h1>
+     <h3>Enter Name &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Html.TextBoxFor(m=>m.Name)</h3><br><br>
+     <h3>Enter Password &nbsp &nbsp @Html.PasswordFor(m=>m.Password)</h3><br><br>
+     
+     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input type="submit" onsubmit="return v1()" value="Sing in">
+      
+
+   
+</div>
+
+</form>
+</body>
+</head>
+</html>
+

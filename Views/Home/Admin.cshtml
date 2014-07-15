@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+
+
+<html>
+<head>
+<title>Practice</title>
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/text.css" />
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/style.css" />
+<link href="~/Content/galleria.css" rel="stylesheet" type="text/css" media="screen"> 
+<script language="JavaScript" type="text/JavaScript">
+</script>
+    <body>
+<form >
+ <br>
+   <div class="6u">
+								@*<ul class="link-list">*@
+									@*<li><a href="#">Upload C.V</a></li>*@
+                                    <form action="/Employee_Sign/save_cv" method="post" enctype="multipart/form-data" >
+
+    Upload cv: <input type="file" name="image" />
+ 
+     
+ 
+    <input type="submit" value="upload" />
+</form>
+								@*</ul>*@
+							</div>
+    
+ 
+
+</form>
+</body>
+</head>
+</html>

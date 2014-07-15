@@ -1,0 +1,89 @@
+@model EAD_Project.User
+<html>
+<head>
+<title>Sign-Up</title>
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/text.css" />
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="~/Content/style.css" />
+<link href="~/Content/galleria.css" rel="stylesheet" type="text/css" media="screen"> 
+
+  
+    <script>
+    function myFunction() {
+          // document.write("ALLAH");
+          
+               if(document.getElementById("passwd").value!=document.getElementById("passwd_again").value)
+               {
+                   window.alert("Passwords do not match");
+                   document.getElementById('passwd').value="";
+                   document.getElementById('passwd_again').value="";
+               }
+           
+
+          
+
+
+       }
+       </script>
+
+
+
+</head>
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+ @using(Html.BeginForm("AddUser", "Home",
+                            new { id = "f1" }, FormMethod.Post))
+                            {
+ <br/>
+     
+ <div>
+     <h1> Registration </h1><br>
+     <h3>Enter Name &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="Name" id="userName"/></h3><br><br>
+     <script>
+
+      
+         $(document).ready(function () {
+
+             $('#userName').blur(function () {
+
+                 var userName = $('#userName').val();
+
+                
+                 $.getJSON("/Home/CheckUserNameInDb?UserName=" + userName, function (data) {
+                     if (!data) {
+                         alert("User already exists in database");
+                         $('#userName').val("");
+
+                     }
+                     else {
+                         alert("User Name is available");
+                     }
+                 });
+
+             });
+
+         });
+            
+
+                
+          
+        </script>
+     <h3>Enter Email &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Html.TextBoxFor(m=>m.Email)</h3><br><br>
+     <h3>Enter Password &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp @Html.PasswordFor(m => m.Password, new { id="passwd"})</h3><br><br>
+     <h3>Re-enter Password &nbsp &nbsp &nbsp @Html.PasswordFor(m => m.Password, new { id="passwd_again",onchange="myFunction()"})</h3><br><br>
+     
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="submit" value="Register"/>
+ 
+     
+
+    
+
+
+
+   
+</div>
+
+ }
+</body>
+</html>
